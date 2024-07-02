@@ -1,0 +1,10 @@
+/* section02 ---------------------------------------------------- */
+#section02 {
+	// 繼承引入 %frame 定義好的皮膚(外框)樣式
+	@extend %frame;
+	top: -50px;
+	@include lg {
+		top: 0;
+		margin-top: 90px;
+	}
+}

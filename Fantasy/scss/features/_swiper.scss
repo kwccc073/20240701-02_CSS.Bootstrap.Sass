@@ -1,0 +1,50 @@
+/*swiper ---------------------------------------------------------*/
+#swiper {
+    // swiper提供的原生變數可以修改主題顏色
+    --swiper-theme-color: white;
+
+    .swiper-slide {
+        // background: red;
+
+        img {
+            width: 100%;
+            height: 100%;
+            /* object-fit: cover 使內容填充其容器，同時保持內容的縱橫比。*/
+            object-fit: cover;
+        }
+    }
+
+    height: 470px;
+
+    .swiper-pagination-bullet {
+        background: white;
+        opacity: 0.5;
+    }
+
+    // 這兩個class是連在一起的
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        margin-top: -40px;
+    }
+
+    @include sm {
+        height: 300px;
+    }
+
+    @include lg {
+        height: 360px;
+    }
+
+    @include xl {
+        height: 400px;
+    }
+}
+
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+    background-image: none;
+}

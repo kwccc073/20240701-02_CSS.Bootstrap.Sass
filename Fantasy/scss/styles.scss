@@ -1,0 +1,29 @@
+// 此檔案為main入口，主要用來引入需要的partials
+
+// 變數
+@import './variables';
+
+// mixins
+@import './mixins/rwd';
+
+// 全域設定
+@import './global';
+
+// 繼承樣式(extends資料夾)
+@import './extends/frame';
+
+// 區塊結構
+@import './navbar';
+@import './home';
+@import './section01';
+@import './section02';
+@import './section03';
+@import './section04';
+@import './section05';
+@import './footer';
+
+
+// 功能
+@import './features/modal';
+@import './features/swiper';
+@import './features/backtop';
