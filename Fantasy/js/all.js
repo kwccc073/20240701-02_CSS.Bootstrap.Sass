@@ -292,3 +292,64 @@ $('.fog').each(function (index, fog) {
         ease: 'none'
     })
 })
+
+// splitText 文字動畫------------------------------------------------------
+gsap.set('#splitText', {
+    perspective: 400
+})
+
+const tl = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 8
+})
+
+const paragraphs = gsap.utils.toArray('#splitText p')
+console.log(paragraphs)
+
+// [ p, p, p, p, p ]
+const splitTexts = paragraphs.map(function (p) {
+    return new SplitText(p, {
+        charsClass: 'charBg'
+    })
+})
+
+// 新陣列放SplitText =>  [SplitText, SplitText, SplitText, SplitText, SplitText]
+// 這是一個二維陣列
+console.log(splitTexts)
+
+splitTexts.forEach(function (splitText) {
+    const chars = splitText.chars
+    gsap.set('#splitText', {
+        display: 'flex'
+    })
+    tl.from(chars,
+        {
+            // 進場動畫
+            y: 80,
+            rotationX: 0,
+            rotationY: 180,
+            scale: 2,
+            transformOrigin: '0% 50% -100',
+            opacity: 0,
+            ease: 'back',
+            stagger: 0.1,
+            duration: 2,
+            // 離場動畫
+            onComplete() {
+                gsap.to(chars, {
+                    delay: 3,
+                    opacity: 0,
+                    scale: 2,
+                    y: 80,
+                    rotationX: 180,
+                    rotationY: 0,
+                    transformOrigin: '0% 50% -100',
+                    ease: 'back',
+                    stagger: 0.1,
+                    duration: 2,
+                })
+            }
+        },
+        '+=3' // 下一組動畫延遲三秒進場，才會接在上一組動畫離場的後面
+    )
+})
